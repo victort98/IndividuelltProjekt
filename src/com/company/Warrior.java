@@ -11,7 +11,8 @@ public class Warrior extends Character{
     @Override
     public void information() {
         System.out.println("The warrior uses his mighty sword to kill his enemies");
-        System.out.println("Health: " + health);
+        System.out.println("Base health and damage: ");
+        System.out.println("Health: 25");
         System.out.println("Damage: " + damageInfo);
     }
 

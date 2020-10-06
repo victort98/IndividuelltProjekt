@@ -79,7 +79,94 @@ public class Game {
     }
 
     public void playTheGame() {
+        if(numberOfCharacters == 0) {
+            System.out.println("You need to create a character first");
+            showMainMenu();
+        }
 
+        while(rat.health > 0 && warrior.health > 0 && warrior.level < 2.5) {
+            System.out.println("Health: " + warrior.health + "          " + "Enemy health: " + rat.health + "\n" +
+                    "Rage: " + warrior.rage + "            " + "Enemy damage: " + rat.damageInfo + "\n" +
+                    "Health potions: " + numOfHealthPotions + "\n" +
+                    "Rage potions: " + numOfRagePotions);
+            System.out.println("You are fighting a rat\n" +
+                    "1: Attack\n" +
+                    "2: Whirlwind\n" +
+                    "3: Use health potion\n" +
+                    "4: use rage potion\n" +
+                    "0: Leave dungeon");
+            try {
+                String userInput = scan.nextLine();
+                int warriorDamage = warrior.getDamage();
+                int ratDamage = rat.getRatDamage();
+
+                switch(userInput) {
+                    case "1":
+                        rat.health -= warriorDamage;
+                        warrior.health -= ratDamage;
+
+                        System.out.println("You attack the rat for " + warriorDamage + " damage");
+                        System.out.println("The rat attacks you for " + ratDamage + " damage");
+
+                        if(warrior.health <= 0) {
+                            System.out.println("You lost the fight and your character is dead");
+                            numberOfCharacters--;
+                            showMainMenu();
+                        } else if (rat.health <= 0) {
+                            System.out.println("You won the fight");
+                            warrior.level += 0.5;
+                            System.out.println("Your level is now " + warrior.level + " and your strength is growing");
+                            rat.health = 10;
+                            dropChanceHealthAndRage();
+                        }
+                        break;
+
+                    case "2":
+                        if(warrior.rage < 25) {
+                            System.out.println("You don't have enough rage");
+                        } else {
+                            int whirlwind = rand.nextInt(20 - 15 + 1) + 15;
+                            warrior.rage -= 25;
+
+                            rat.health -= whirlwind;
+                            warrior.health -= ratDamage;
+
+                            System.out.println("You attack the rat for " + whirlwind + " damage");
+                            System.out.println("The rat attacks you for " + ratDamage + " damage");
+
+                            if(warrior.health <= 0) {
+                                System.out.println("You lost the fight and your character is dead");
+                                numberOfCharacters--;
+                                showMainMenu();
+                            } else if (rat.health <= 0) {
+                                System.out.println("You won the fight");
+                                warrior.level += 0.5;
+                                System.out.println("Your level is now " + warrior.level + " and your strength is growing");
+                                rat.health = 10;
+                                dropChanceHealthAndRage();
+                            }
+                        }
+                        break;
+
+                    case "3":
+                        useHealthPotion();
+                        break;
+
+                    case "4":
+                        useRagePotion();
+                        break;
+
+                    case "0":
+                        System.out.println("You manage to escape the dungeon");
+                        showMainMenu();
+                        break;
+                    default:
+                        System.out.println("Wrong input");
+                }
+            } catch (Exception e) {
+                System.out.println("Please enter a valid input");
+            }
+        }
     }
 
     public void useHealthPotion() {
@@ -90,11 +177,13 @@ public class Game {
             System.out.println("You already have full health");
         }
         else if(warrior.health + healAmount > 25) {
+            System.out.println("You use a health potion\n");
             warrior.health = 25;
             numOfHealthPotions--;
         }
         else {
             warrior.health += healAmount;
+            System.out.println("You use a health potion\n");
             numOfHealthPotions--;
         }
     }
@@ -107,10 +196,12 @@ public class Game {
             System.out.println("You already have full rage");
         }
         else if(warrior.rage + rageAmount > 50) {
+            System.out.println("You use a rage potion\n");
             warrior.rage = 50;
             numOfRagePotions--;
         }
         else {
+            System.out.println("You use a rage potion\n");
             warrior.rage += rageAmount;
             numOfRagePotions--;
         }
