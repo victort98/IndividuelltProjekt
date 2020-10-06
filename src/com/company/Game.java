@@ -27,6 +27,7 @@ public class Game {
     private ArrayList<Monsters> monsters = new ArrayList<>();
     private int monsterHealth;
     private int monsterDamage;
+    private int numberOfCharacters;
 
     public Game(){
 
@@ -81,7 +82,16 @@ public class Game {
     }
 
     public void createCharacter() {
-
+        if(numberOfCharacters == 1) {
+            System.out.println("You already have a character");
+            showMainMenu();
+        } else {
+            System.out.println("Enter the name of your character: ");
+            warrior.name = scan.nextLine();
+            numberOfCharacters++;
+            System.out.println("You created a warrior called " + warrior.name);
+            showMainMenu();
+        }
     }
 
     public void viewCharacter() {
@@ -97,6 +107,5 @@ public class Game {
     }
 
     public void exit() {
-
     }
 }
