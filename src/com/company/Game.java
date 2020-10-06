@@ -95,7 +95,8 @@ public class Game {
     }
 
     public void viewCharacter() {
-
+        warrior.information();
+        showMainMenu();
     }
 
     public void warriorInformation() {
