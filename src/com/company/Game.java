@@ -107,5 +107,7 @@ public class Game {
     }
 
     public void exit() {
+        System.out.println("Thanks for playing my game");
+        System.exit(0);
     }
 }
