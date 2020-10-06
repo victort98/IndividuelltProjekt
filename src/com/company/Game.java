@@ -115,6 +115,17 @@ public class Game {
         }
     }
 
+    public void dropChanceHealthAndRage() {
+        if(rand.nextInt(100) > healthPotionDropChance) {
+            numOfHealthPotions++;
+            System.out.println("You got a health potion and now have " + numOfHealthPotions + " health potions");
+        }
+        if(rand.nextInt(100) > ragePotionDropChance) {
+            numOfRagePotions++;
+            System.out.println("You got a rage potion and now have " + numOfRagePotions + " rage potions");
+        }
+    }
+
     public void createCharacter() {
         if(numberOfCharacters == 1) {
             System.out.println("You already have a character");
