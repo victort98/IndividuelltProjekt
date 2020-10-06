@@ -25,6 +25,7 @@ public class Game {
     private int healthPotionDropChance= 50;
     private int ragePotionDropChance = 50;
     private ArrayList<Monsters> monsters = new ArrayList<>();
+    private String monsterName;
     private int monsterHealth;
     private int monsterDamage;
     private int numberOfCharacters;
@@ -123,6 +124,35 @@ public class Game {
         if(rand.nextInt(100) > ragePotionDropChance) {
             numOfRagePotions++;
             System.out.println("You got a rage potion and now have " + numOfRagePotions + " rage potions");
+        }
+    }
+
+    public void getRandomMonster() {
+        int randomNumber= rand.nextInt(70) + 1;
+        if(randomNumber <= 20) {
+            monsterHealth = spider.health;
+            monsterName = spider.name;
+            monsterDamage = spider.getSpiderDamage();
+        }
+        if(randomNumber > 20 && randomNumber <= 40) {
+            monsterHealth = troll.health;
+            monsterName = troll.name;
+            monsterDamage = troll.getTrollDamage();
+        }
+        if(randomNumber > 40 && randomNumber <= 60) {
+            monsterHealth = bear.health;
+            monsterName = bear.name;
+            monsterDamage = bear.getBearDamage();
+        }
+        if(randomNumber > 60 && randomNumber <= 65) {
+            monsterHealth = orc.health;
+            monsterName = orc.name;
+            monsterDamage = orc.getOrcDamage();
+        }
+        if(randomNumber > 65) {
+            monsterHealth = dragon.health;
+            monsterName = dragon.name;
+            monsterDamage = dragon.getDragonDamage();
         }
     }
 
