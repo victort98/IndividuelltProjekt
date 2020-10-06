@@ -95,16 +95,25 @@ public class Game {
     }
 
     public void viewCharacter() {
+        if(numberOfCharacters == 0) {
+            System.out.println("You need to create a character");
+            showMainMenu();
+        } else {
+            System.out.println(warrior.name + " The mighty warrior");
+            System.out.println("Health: " + warrior.health);
+            System.out.println("Rage: " + warrior.rage);
+            System.out.println("Level: " + warrior.level);
+            System.out.println("Health potions: " + numOfHealthPotions);
+            System.out.println("Rage potions: " + numOfRagePotions);
+        }
+    }
+
+    public void warriorInformation() {
         warrior.information();
         showMainMenu();
     }
 
-    public void warriorInformation() {
-
-    }
-
     public void viewMonsters() {
-
     }
 
     public void exit() {
