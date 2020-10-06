@@ -114,6 +114,18 @@ public class Game {
     }
 
     public void viewMonsters() {
+        monsters.add(rat);
+        monsters.add(spider);
+        monsters.add(troll);
+        monsters.add(bear);
+        monsters.add(orc);
+        monsters.add(dragon);
+
+        System.out.println("These are all of the different monsters in the game:");
+        for(Monsters monster : monsters) {
+            System.out.println(monster);
+        }
+        showMainMenu();
     }
 
     public void exit() {
