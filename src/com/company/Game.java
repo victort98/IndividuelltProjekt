@@ -81,6 +81,40 @@ public class Game {
 
     }
 
+    public void useHealthPotion() {
+        if (numOfHealthPotions == 0) {
+            System.out.println("You are out of health potions, kill monsters to get more");
+        }
+        else if(warrior.health == 25) {
+            System.out.println("You already have full health");
+        }
+        else if(warrior.health + healAmount > 25) {
+            warrior.health = 25;
+            numOfHealthPotions--;
+        }
+        else {
+            warrior.health += healAmount;
+            numOfHealthPotions--;
+        }
+    }
+
+    public void useRagePotion() {
+        if (numOfRagePotions == 0) {
+            System.out.println("You are out of rage potions, kill monsters to get more");
+        }
+        else if(warrior.rage == 50) {
+            System.out.println("You already have full rage");
+        }
+        else if(warrior.rage + rageAmount > 50) {
+            warrior.rage = 50;
+            numOfRagePotions--;
+        }
+        else {
+            warrior.rage += rageAmount;
+            numOfRagePotions--;
+        }
+    }
+
     public void createCharacter() {
         if(numberOfCharacters == 1) {
             System.out.println("You already have a character");

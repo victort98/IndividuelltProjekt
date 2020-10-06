@@ -15,14 +15,6 @@ public class Warrior extends Character{
         System.out.println("Damage: " + damageInfo);
     }
 
-    public int getHealth() {
-        return health;
-    }
-
-    public void setHealth (int warriorMaxHealth) {
-        this.health = warriorMaxHealth;
-    }
-
     public int getDamage() {
         Random rand = new Random();
         return damage = rand.nextInt( 7 - 4 + 1) + 4;
