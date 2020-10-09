@@ -8,6 +8,10 @@ public class Spider extends Monsters{
         super(health, damage, damageInfo, name);
     }
 
+    protected void makeYourSpecialNoise() {
+        System.out.println("Screeech!");
+    }
+
     private Random rand = new Random();
 
     @Override

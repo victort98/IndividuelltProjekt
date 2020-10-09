@@ -8,6 +8,10 @@ public class Dragon extends Monsters {
         super(health, damage, damageInfo, name);
     }
 
+    protected void makeYourSpecialNoise() {
+        System.out.println("GROOAAARRR");
+    }
+
     private Random rand = new Random();
 
     @Override
