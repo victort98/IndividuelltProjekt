@@ -88,7 +88,8 @@ public class Game {
             System.out.println("Health: " + warrior.health + "          " + "Enemy health: " + rat.health + "\n" +
                     "Rage: " + warrior.rage + "            " + "Enemy damage: " + rat.damageInfo + "\n" +
                     "Health potions: " + numOfHealthPotions + "\n" +
-                    "Rage potions: " + numOfRagePotions);
+                    "Rage potions: " + numOfRagePotions + "\n");
+            rat.makeNoise();
             System.out.println("You are fighting a rat\n" +
                     "1: Attack\n" +
                     "2: Whirlwind\n" +
