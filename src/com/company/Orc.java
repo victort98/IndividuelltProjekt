@@ -8,6 +8,10 @@ public class Orc extends Monsters {
         super(health, damage, damageInfo, name);
     }
 
+    protected void makeYourSpecialNoise() {
+        System.out.println("Grak brrretz!");
+    }
+
     private Random rand = new Random();
 
     @Override

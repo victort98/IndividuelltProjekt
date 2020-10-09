@@ -8,6 +8,10 @@ public class Troll extends Monsters {
         super(health, damage, damageInfo, name);
     }
 
+    protected void makeYourSpecialNoise() {
+        System.out.println("Gruntz!");
+    }
+
     private Random rand = new Random();
 
     @Override

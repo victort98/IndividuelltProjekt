@@ -8,6 +8,10 @@ public class Rat extends Monsters{
         super(health, damage, damageInfo, name);
     }
 
+    protected void makeYourSpecialNoise() {
+        System.out.println("Squeak, Squeak");
+    }
+
     private Random rand = new Random();
 
     @Override
