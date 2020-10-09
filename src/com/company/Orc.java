@@ -2,7 +2,7 @@ package com.company;
 
 import java.util.Random;
 
-public class Orc extends Monsters {
+public class Orc extends Monsters implements MonsterInformation {
 
     public Orc(int health, int damage, String damageInfo, String name) {
         super(health, damage, damageInfo, name);

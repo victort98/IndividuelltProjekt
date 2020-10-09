@@ -8,10 +8,6 @@ public class Warrior extends Character{
         super(health, damage, damageInfo, name, level, rage);
     }
 
-    @Override
-    public void information() {
-    }
-
     public int getDamage() {
         Random rand = new Random();
         return damage = rand.nextInt( 7 - 4 + 1) + 4;
