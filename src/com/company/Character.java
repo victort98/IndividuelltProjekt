@@ -10,8 +10,19 @@ public abstract class Character extends Creature {
         this.rage = rage;
     }
 
-    @Override
-    public String toString() {
-        return name + " the warrior has " + health + " health and is level " + level;
+    public String warriorInformation(){
+        return "The warrior uses his mighty sword to kill his enemies\n" +
+        "Base health and damage: \n" +
+        "Health: 25\n" +
+        "Damage: " + damageInfo;
+    }
+
+
+    public void setDamageInfo() {
+        this.damageInfo = "8-12";
+    }
+
+    public void visitor(CallbackWarrior callback) {
+        callback.call(this);
     }
 }

@@ -275,8 +275,15 @@ public class Game {
     }
 
     public void warriorInformation() {
-        warrior.information();
-        showMainMenu();
+        if(warrior.level >= 2.5) {
+            warrior.visitor((Character::setDamageInfo));
+            System.out.println(warrior.warriorInformation());
+            showMainMenu();
+        }
+        else {
+            System.out.println(warrior.warriorInformation());
+            showMainMenu();
+        }
     }
 
     public void viewMonsters() {
