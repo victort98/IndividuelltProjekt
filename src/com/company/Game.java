@@ -15,8 +15,7 @@ public class Game {
     Orc orc = new Orc(45, 0, "15-22", "Orc");
     Dragon dragon = new Dragon(60, 0, "17-25", "Dragon");
 
-    Warrior warrior = new Warrior(25, 0, "4-7", "", 1, 50);
-
+    Warrior warrior = Warrior.getInstance();
 
     Random rand = new Random();
     Scanner scan = new Scanner(System.in);
