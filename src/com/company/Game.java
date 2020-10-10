@@ -6,6 +6,8 @@ import java.util.Scanner;
 
 public class Game {
 
+    MonsterInformationMaker monsterInformationMaker = new MonsterInformationMaker();
+
     Rat rat = new Rat(10, 0, "1-3", "Rat");
     Spider spider = new Spider(15, 0, "3-5", "Spider");
     Troll troll = new Troll(25, 0, "7-11", "Troll");
@@ -288,17 +290,14 @@ public class Game {
     }
 
     public void viewMonsters() {
-        monsters.add(rat);
-        monsters.add(spider);
-        monsters.add(troll);
-        monsters.add(bear);
-        monsters.add(orc);
-        monsters.add(dragon);
 
         System.out.println("These are all of the different monsters in the game:");
-        for(Monsters monster : monsters) {
-            System.out.println(monster);
-        }
+        monsterInformationMaker.ratInformation();
+        monsterInformationMaker.spiderInformation();
+        monsterInformationMaker.trollInformation();
+        monsterInformationMaker.bearInformation();
+        monsterInformationMaker.orcInformation();
+        monsterInformationMaker.dragonInformation();
         showMainMenu();
     }
 
