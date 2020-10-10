@@ -12,6 +12,4 @@ public abstract class Creature {
         this.damageInfo = damageInfo;
         this.name = name;
     }
-
-    public abstract void information();
 }

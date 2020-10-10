@@ -2,7 +2,7 @@ package com.company;
 
 import java.util.Random;
 
-public class Spider extends Monsters{
+public class Spider extends Monsters implements MonsterInformation {
 
     public Spider(int health, int damage, String damageInfo, String name) {
         super(health, damage, damageInfo, name);
@@ -13,6 +13,7 @@ public class Spider extends Monsters{
     }
 
     private Random rand = new Random();
+
 
     @Override
     public void information() {
