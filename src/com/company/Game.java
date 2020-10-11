@@ -176,6 +176,97 @@ public class Game {
                 System.out.println("Please enter a valid input");
             }
         }
+
+        getRandomMonster();
+        while(monsterHealth > 0 && warrior.health > 0 && warrior.level >= 2.5 && warrior.level <= 5) {
+            System.out.println("Health: " + warrior.health + "          " + "Enemy health: " + monsterHealth + "\n" +
+                    "Rage: " + warrior.rage + "            " + "Enemy damage: " + monsterDamageInfo + "\n" +
+                    "Health potions: " + numOfHealthPotions + "\n" +
+                    "Rage potions: " + numOfRagePotions + "\n");
+            checkMonsterName();
+            System.out.println("You are fighting a " + monsterName + "\n" +
+                    "1: Attack\n" +
+                    "2: Whirlwind\n" +
+                    "3: Use health potion\n" +
+                    "4: use rage potion\n" +
+                    "0: Leave dungeon");
+            try {
+                String userInput = scan.nextLine();
+                int warriorDamage = warrior.getStrongerDamage();
+
+                switch(userInput) {
+                    case "1":
+                        monsterHealth -= warriorDamage;
+                        warrior.health -= monsterDamage;
+
+                        System.out.println("You attack the " + monsterName + " for " + warriorDamage + " damage");
+                        System.out.println("The " + monsterName + " attacks you for " + monsterDamage + " damage");
+
+                        if(warrior.health <= 0) {
+                            System.out.println("You lost the fight and your character is dead");
+                            numberOfCharacters--;
+                            showMainMenu();
+                        } else if (monsterHealth <= 0) {
+                            System.out.println("You won the fight");
+                            warrior.level += 0.5;
+                            System.out.println("Your level is now " + warrior.level + " and your strength is growing");
+                            getRandomMonster();
+                            dropChanceHealthAndRage();
+                        }
+                        break;
+
+                    case "2":
+                        if(warrior.rage < 25) {
+                            System.out.println("You don't have enough rage");
+                        } else {
+                            int whirlwind = rand.nextInt(25 - 20 + 1) + 20;
+                            warrior.rage -= 25;
+
+                            monsterHealth -= whirlwind;
+                            warrior.health -= monsterDamage;
+
+                            System.out.println("You attack the " + monsterName + " for " + whirlwind + " damage");
+                            System.out.println("The " + monsterName + " attacks you for " + monsterDamage + " damage");
+
+                            if(warrior.health <= 0) {
+                                System.out.println("You lost the fight and your character is dead");
+                                numberOfCharacters--;
+                                showMainMenu();
+                            } else if (monsterHealth <= 0) {
+                                System.out.println("You won the fight");
+                                warrior.level += 0.5;
+                                System.out.println("Your level is now " + warrior.level + " and your strength is growing");
+                                getRandomMonster();
+                                dropChanceHealthAndRage();
+                            }
+                        }
+                        break;
+
+                    case "3":
+                        useHealthPotion();
+                        break;
+
+                    case "4":
+                        useRagePotion();
+                        break;
+
+                    case "0":
+                        System.out.println("You manage to escape");
+                        showMainMenu();
+                        break;
+
+                    default:
+                        System.out.println("Wrong input");
+                }
+            }
+            catch (Exception e) {
+                System.out.println("Please enter a valid input");
+            }
+            if(warrior.level == 5) {
+                System.out.println("You won the game!");
+                showMainMenu();
+            }
+        }
     }
 
     public void useHealthPotion() {
@@ -225,6 +316,25 @@ public class Game {
             numOfRagePotions++;
             System.out.println("You got a rage potion and now have " + numOfRagePotions + " rage potions");
         }
+    }
+
+    public void checkMonsterName() {
+        if( monsterName.equalsIgnoreCase("spider")) {
+            spider.makeNoise();
+        }
+        else if( monsterName.equalsIgnoreCase("troll")) {
+            troll.makeNoise();
+        }
+        else if( monsterName.equalsIgnoreCase("bear")) {
+            bear.makeNoise();
+        }
+        else if( monsterName.equalsIgnoreCase("orc")) {
+            orc.makeNoise();
+        }
+        else if( monsterName.equalsIgnoreCase("dragon")) {
+            dragon.makeNoise();
+        }
+
     }
 
     public void getRandomMonster() {
