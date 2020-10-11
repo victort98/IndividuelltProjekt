@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class Game {
 
     MonsterInformationMaker monsterInformationMaker = new MonsterInformationMaker();
+    GameInformationMaker gameInformationMaker = new GameInformationMaker();
 
     Rat rat = new Rat(10, 0, "1-3", "Rat");
     Spider spider = new Spider(15, 0, "3-5", "Spider");
@@ -27,6 +28,7 @@ public class Game {
     private int ragePotionDropChance = 50;
     private ArrayList<Monsters> monsters = new ArrayList<>();
     private String monsterName;
+    private String monsterDamageInfo;
     private int monsterHealth;
     private int monsterDamage;
     private int numberOfCharacters;
@@ -43,6 +45,7 @@ public class Game {
                     "3: View character\n" +
                     "4: Warrior information\n" +
                     "5: View monsters\n" +
+                    "6: Game information\n" +
                     "0: Exit");
             System.out.println("Enter your menu choice");
 
@@ -67,6 +70,10 @@ public class Game {
 
                 case "5":
                     viewMonsters();
+                    break;
+
+                case "6":
+                    gameInformation();
                     break;
 
                 case "0":
@@ -225,26 +232,31 @@ public class Game {
         if(randomNumber <= 20) {
             monsterHealth = spider.health;
             monsterName = spider.name;
+            monsterDamageInfo = spider.damageInfo;
             monsterDamage = spider.getSpiderDamage();
         }
         if(randomNumber > 20 && randomNumber <= 40) {
             monsterHealth = troll.health;
             monsterName = troll.name;
+            monsterDamageInfo = troll.damageInfo;
             monsterDamage = troll.getTrollDamage();
         }
         if(randomNumber > 40 && randomNumber <= 60) {
             monsterHealth = bear.health;
             monsterName = bear.name;
+            monsterDamageInfo = bear.damageInfo;
             monsterDamage = bear.getBearDamage();
         }
         if(randomNumber > 60 && randomNumber <= 65) {
             monsterHealth = orc.health;
             monsterName = orc.name;
+            monsterDamageInfo = orc.damageInfo;
             monsterDamage = orc.getOrcDamage();
         }
         if(randomNumber > 65) {
             monsterHealth = dragon.health;
             monsterName = dragon.name;
+            monsterDamageInfo = dragon.damageInfo;
             monsterDamage = dragon.getDragonDamage();
         }
     }
@@ -298,6 +310,12 @@ public class Game {
         monsterInformationMaker.orcInformation();
         monsterInformationMaker.dragonInformation();
         showMainMenu();
+    }
+
+    public void gameInformation() {
+        gameInformationMaker.displayCharacterInformation();
+        gameInformationMaker.displayLevelOneInformation();
+        gameInformationMaker.displayLevelTwoInformation();
     }
 
     public void exit() {

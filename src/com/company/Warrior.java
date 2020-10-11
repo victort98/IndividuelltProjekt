@@ -17,8 +17,13 @@ public class Warrior extends Character{
         return single_instance;
     }
 
+    Random rand = new Random();
+
     public int getDamage() {
-        Random rand = new Random();
         return damage = rand.nextInt( 7 - 4 + 1) + 4;
+    }
+
+    public int getStrongerDamage() {
+        return damage = rand.nextInt(12 - 8 + 1) + 8;
     }
 }
